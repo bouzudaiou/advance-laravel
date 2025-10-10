@@ -18,3 +18,4 @@ use App\Http\Controllers\AuthorController;
 //     return view('welcome');
 // });
 Route::get('/', [AuthorController::class, 'index']);
+Route::get('/add', [AuthorController::class, 'add']);
