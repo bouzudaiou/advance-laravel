@@ -14,9 +14,18 @@ use App\Models\Author;
     }
     
 // データ追加用ページの表示
-public function add(){
+    public function add()
+    {
        return view('add');
-}
+    }
+
+    // データ追加処理
+    public function create(Request $request)
+    {
+    $form = $request->all();
+    Author::create($form);
+    return redirect('/');
+    }
 
 
 }
