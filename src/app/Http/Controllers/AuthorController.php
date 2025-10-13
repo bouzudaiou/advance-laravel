@@ -27,5 +27,10 @@ use App\Models\Author;
     return redirect('/');
     }
 
+    public function edit(Request $request){
+         $author = Author::find($request->id);
+        return view('edit', ['form' => $author]);
+    }
+
 
 }
