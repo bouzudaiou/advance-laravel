@@ -27,9 +27,19 @@ use App\Models\Author;
     return redirect('/');
     }
 
+    // データ編集用ページの表示
     public function edit(Request $request){
-         $author = Author::find($request->id);
+        $author = Author::find($request->id);
         return view('edit', ['form' => $author]);
+    }
+
+    // データ更新処理
+    public function update(Request $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Author::find($request->id)->update($form);
+        return redirect('/');
     }
 
 
