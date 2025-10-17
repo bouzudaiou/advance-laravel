@@ -42,5 +42,19 @@ use App\Models\Author;
         return redirect('/');
     }
 
+    // データ削除用ページの表示
+    public function delete(Request $request)
+　　 {
+        $author = Author::find($request->id);
+        return view('delete', ['author' => $author]);
+    }
+
+    // データ削除処理
+    public function remove(Request $request)
+    {
+        Author::find($request->id)->delete();
+        return redirect('/');
+    }
+
 
 }
