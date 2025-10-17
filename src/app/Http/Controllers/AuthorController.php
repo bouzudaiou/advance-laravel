@@ -44,7 +44,7 @@ use App\Models\Author;
 
     // データ削除用ページの表示
     public function delete(Request $request)
-　　 {
+    {
         $author = Author::find($request->id);
         return view('delete', ['author' => $author]);
     }
