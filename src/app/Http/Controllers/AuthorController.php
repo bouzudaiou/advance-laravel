@@ -56,5 +56,31 @@ use App\Models\Author;
         return redirect('/');
     }
 
+// データ検索用ページの表示
+public function find()
+{
+    return view('find', ['input' => '']);
+}
+
+// データ検索処理
+public function search(Request $request)
+{
+    $item = Author::where('name', 'LIKE',"%{$request->input}%")->first();
+    $param = [
+        'input' => $request->input,
+        'item' => $item
+    ];
+    return view('find', $param);
+}
+
+// モデル結合ルート
+public function bind(Author $author)
+{
+    $data = [
+        'item'=>$author,
+    ];
+    return view('author.binds', $data);
+}
+
 
 }
