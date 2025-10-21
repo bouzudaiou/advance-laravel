@@ -15,4 +15,12 @@ class Book extends Model
     public function getTitle(){
         return 'ID'.$this->id . ':' . $this->title;
     }
+
+    // Authorモデルとのリレーション（多対1）
+public function author()
+{
+    return $this->belongsTo(Author::class);
+}
+
+
 }

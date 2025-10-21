@@ -30,9 +30,15 @@ td {
       {{$item->getDetail()}}
     </td>
     <td>
-      @if ($item->book != null)
-      {{ $item->book->getTitle() }}
-      @endif
+      <td>
+    @if ($item->books->count() > 0)
+        @foreach ($item->books as $book)
+            {{ $book->getTitle() }}<br>
+        @endforeach
+    @else
+        <span style="color: gray;">本なし</span>
+    @endif
+</td>
     </td>
   </tr>
   @endforeach

@@ -20,11 +20,19 @@ td {
 <table>
   <tr>
     <th>Books</th>
+    <th>Author</th>
   </tr>
   @foreach ($items as $item)
   <tr>
     <td>
       {{$item->getTitle()}}
+    </td>
+    <td>
+    @if ($item->author != null)
+        {{ $item->author->name }}
+    @else
+        <span style="color: gray;">著者不明</span>
+    @endif
     </td>
   </tr>
   @endforeach
