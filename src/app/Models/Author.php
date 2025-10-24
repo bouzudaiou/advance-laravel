@@ -22,5 +22,11 @@ public function books(){
   return $this->hasMany(Book::class);
 }
 
+//Bookモデルとのリレーション（多対多）
+public function reviewedbooks(){
+  return $this->belongsToMany(Book::class, table: 'reviews');
+}
+
+
 
 }

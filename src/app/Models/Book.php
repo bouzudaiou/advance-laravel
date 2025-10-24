@@ -23,5 +23,11 @@ public function author()
     return $this->belongsTo(Author::class);
 }
 
+//Authorモデルとのリレーション（多対多）
+public function reviewers()
+{
+    return $this->belongsToMany(Author::class, table: 'reviews');
+}
+
 
 }
