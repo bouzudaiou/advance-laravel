@@ -23,6 +23,7 @@ td {
   <tr>
     <th>Author</th>
     <th>Book</th>
+    <th>Review</th>
   </tr>
   @foreach ($items as $item)
   <tr>
@@ -30,15 +31,22 @@ td {
       {{$item->getDetail()}}
     </td>
     <td>
-      <td>
-    @if ($item->books->count() > 0)
+      @if ($item->books->count() > 0)
         @foreach ($item->books as $book)
-            {{ $book->getTitle() }}<br>
+          {{ $book->getTitle() }}<br>
         @endforeach
-    @else
+      @else
         <span style="color: gray;">本なし</span>
-    @endif
-</td>
+      @endif
+    </td>
+    <td>
+      @if ($item->reviewedbooks->count() > 0)
+        @foreach ($item->reviewedbooks as $book)
+          {{ $book->getTitle() }}<br>
+        @endforeach
+      @else
+        <span style="color: gray;">レビューなし</span>
+      @endif
     </td>
   </tr>
   @endforeach

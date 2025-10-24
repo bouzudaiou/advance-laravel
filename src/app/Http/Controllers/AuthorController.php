@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Author;
 
-class AuthorController extends Controller
+    class AuthorController extends Controller
 {
     public function index()
     {
@@ -84,7 +84,7 @@ public function bind(Author $author)
 
 public function relate()
 {
-    $items = Author::with('books')->get();
+    $items = Author::with('books', 'reviewedbooks')->get();
     return view('author.index', ['items' => $items]);
 }
 
