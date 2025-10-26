@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Author;
+// フォームリクエストの読み込み
+use App\Http\Requests\AuthorRequest;
 
     class AuthorController extends Controller
 {
@@ -20,7 +22,7 @@ use App\Models\Author;
     }
 
     // データ追加処理
-    public function create(Request $request)
+    public function create(AuthorRequest $request)
     {
     $form = $request->all();
     Author::create($form);
