@@ -11,7 +11,7 @@ use App\Http\Requests\AuthorRequest;
 {
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::simplePaginate(4);
         return view('index', ['authors' => $authors]);
     }
     
