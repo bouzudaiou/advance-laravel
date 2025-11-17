@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
+use App\Models\Person;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,19 @@ Route::prefix('book')->group(function () {
 Route::get('/relation', [AuthorController::class, 'relate']);
 Route::get('/session', [SessionController::class, 'getSes']);
 Route::post('/session', [SessionController::class, 'postSes']);
+Route::get('/softdelete', function () {
+    Person::find(1)->delete();
+});
+Route::get('/softdelete/get', function() {
+    $person = Person::onlyTrashed()->get();
+    dd($person);
+});
+Route::get('/softdelete/restore', function() {
+    Person::onlyTrashed()->restore();
+    return 'レコードを復元しました';
+});
+Route::get('/softdelete/absolute', function() {
+    Person::onlyTrashed()->forceDelete();
+    return 'レコードを完全削除しました';
+});
+
