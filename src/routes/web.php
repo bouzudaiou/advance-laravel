@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
 use App\Models\Person;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,11 @@ Route::get('/softdelete/restore', function() {
 Route::get('/softdelete/absolute', function() {
     Person::onlyTrashed()->forceDelete();
     return 'レコードを完全削除しました';
+});
+Route::get('/uuid', function() {
+    $products = Product::all();
+    foreach($products as $product) {
+        echo $product.'<br>';
+    }
 });
 

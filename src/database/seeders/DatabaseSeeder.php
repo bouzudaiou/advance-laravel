@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
             AuthorsTableSeeder::class,
             PeopleTableSeeder::class,
         ]);
+        Product::factory(10)->create();
     }
 }
